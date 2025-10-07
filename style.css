@@ -1,0 +1,244 @@
+/* styles.css
+   Global styles, variables, components, and responsive rules.
+   Mobile-first approach. Uses CSS Grid & Flexbox.
+*/
+
+/* ---------- Variables (theme / spacing / typography) ---------- */
+:root{
+  /* Colors */
+  --bg: #0b0f14;           /* dark background */
+  --card-bg: #0f1720;      /* slightly lighter */
+  --muted: #99a1aa;
+  --text: #e6eef6;
+  --accent: #00bfa5;       /* teal primary */
+  --accent-2: #ffb300;     /* amber accent */
+  --danger: #e04f4f;
+  --available: #dbe7ea;
+  --selected: var(--accent);
+  --booked: #c94a4a;
+
+  /* Spacing */
+  --space-xs: 6px;
+  --space-sm: 12px;
+  --space-md: 20px;
+  --space-lg: 32px;
+  --container-max: 1200px;
+
+  /* Typography */
+  --font-sans: "Roboto", system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial;
+  --base-font-size: 16px;
+  --radius: 12px;
+  --transition: 200ms ease-in-out;
+  --movie-poster-aspect: 2/3;
+}
+
+/* Import font (developer can change) */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+/* ---------- Base / Global ---------- */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:var(--font-sans);
+  font-size:var(--base-font-size);
+  background:linear-gradient(180deg,var(--bg), #071018 120%);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.45;
+}
+
+/* Container */
+.container{
+  width:100%;
+  max-width:var(--container-max);
+  margin:0 auto;
+  padding:0 var(--space-md);
+}
+
+/* Utility */
+.row{display:flex;flex-wrap:wrap;gap:var(--space-md)}
+.center{display:flex;align-items:center;justify-content:center}
+.hide-mobile{display:none}
+
+/* Links & Buttons */
+a{text-decoration:none;color:inherit}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 16px;border-radius:10px;
+  background:var(--accent);color:#021617;font-weight:600;
+  border:none;cursor:pointer;transition:transform var(--transition),box-shadow var(--transition);
+  box-shadow:0 6px 18px rgba(0,0,0,0.35);
+}
+.btn.secondary{
+  background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text)
+}
+.btn.ghost{
+  background:transparent;color:var(--accent-2);border:1px solid rgba(255,255,255,0.04)
+}
+.btn:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(0,0,0,0.5)}
+.btn:focus{outline:3px solid rgba(0,191,165,0.15);outline-offset:2px}
+
+/* Inputs */
+input,select,textarea{
+  background:linear-gradient(180deg,#0b1116,#071018);
+  color:var(--text);border:1px solid rgba(255,255,255,0.04);
+  padding:10px 12px;border-radius:8px;width:100%;
+}
+label{display:block;margin-bottom:6px;font-size:0.95rem;color:var(--muted)}
+.form-row{display:grid;grid-template-columns:1fr;gap:var(--space-sm)}
+.form-inline{display:flex;gap:var(--space-sm);align-items:center}
+
+/* ---------- Header / Nav ---------- */
+.site-header{
+  border-bottom:1px solid rgba(255,255,255,0.03);
+  background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+  position:sticky;top:0;z-index:40;backdrop-filter: blur(6px);
+}
+.site-nav{
+  display:flex;align-items:center;justify-content:space-between;padding:14px 0;
+}
+.brand{display:flex;align-items:center;gap:12px}
+.brand .logo{
+  width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  display:flex;align-items:center;justify-content:center;color:#021617;font-weight:700;font-size:18px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.4);
+}
+.nav-links{display:flex;gap:18px;align-items:center}
+.nav-links a{color:var(--muted);font-weight:500;padding:8px;border-radius:8px}
+.nav-links a.active, .nav-links a:hover{color:var(--text);background:rgba(255,255,255,0.02)}
+
+/* Mobile menu */
+.mobile-menu-btn{display:flex;align-items:center;gap:8px}
+@media(min-width:900px){
+  .hide-desktop{display:none}
+  .hide-mobile{display:block}
+}
+
+/* ---------- Hero ---------- */
+.hero{
+  padding:var(--space-lg) 0;display:grid;gap:var(--space-md);
+  grid-template-columns:1fr;
+}
+.hero-card{
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius:18px;padding:24px;display:flex;gap:20px;align-items:center;
+  box-shadow:0 12px 40px rgba(3,6,10,0.6);
+}
+.hero-info h1{margin:0;font-size:1.6rem}
+.hero-info p{color:var(--muted);margin-top:6px}
+@media(min-width:900px){
+  .hero{grid-template-columns:1fr 420px}
+  .hero-info h1{font-size:2.2rem}
+}
+
+/* ---------- Movie Lists / Cards ---------- */
+.movie-grid{
+  display:grid;gap:16px;
+  grid-template-columns:repeat(2,1fr);
+}
+.movie-card{
+  display:flex;gap:12px;background:var(--card-bg);padding:12px;border-radius:12px;align-items:flex-start;
+  transition:transform var(--transition),box-shadow var(--transition);
+}
+.movie-card:hover{transform:translateY(-6px)}
+.poster{
+  width:96px;height:144px;border-radius:8px;flex-shrink:0;object-fit:cover;background:#091116;
+  aspect-ratio:var(--movie-poster-aspect);
+}
+.movie-meta h3{margin:0 0 6px 0}
+.meta-row{display:flex;gap:10px;align-items:center;color:var(--muted);font-size:0.95rem}
+
+/* Now showing / Coming soon nav */
+.section-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.section-title h2{margin:0;font-size:1.15rem}
+
+/* CTA badges */
+.badge{padding:6px 10px;border-radius:999px;font-weight:600;background:rgba(255,255,255,0.03);color:var(--muted);font-size:0.9rem}
+
+/* Grid breakpoints */
+@media(min-width:600px){
+  .movie-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(min-width:900px){
+  .movie-grid{grid-template-columns:repeat(4,1fr)}
+  .movie-list { display:block }
+  .movie-card { flex-direction:column; align-items:center; text-align:center }
+  .poster{width:100%;height:auto}
+}
+
+/* ---------- Movies / Filters ---------- */
+.filters{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.filter-control{display:flex;gap:8px;align-items:center}
+
+/* Showtimes chips */
+.showtimes{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.showtime-btn{padding:6px 10px;border-radius:8px;background:rgba(255,255,255,0.03);border:none;cursor:pointer}
+.showtime-btn:hover{transform:translateY(-3px)}
+
+/* ---------- Reservation: seating layout ---------- */
+/* Seat map container */
+.seat-map{
+  background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+  padding:18px;border-radius:14px;border:1px solid rgba(255,255,255,0.02);
+}
+.seat-grid{
+  display:grid;gap:8px;justify-content:center;
+  grid-auto-rows:38px; /* seat height */
+}
+/* seat element style */
+.seat{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:42px;height:38px;border-radius:6px;background:var(--available);
+  color:#021617;font-weight:600;border:1px solid rgba(0,0,0,0.12);
+  cursor:pointer;transition:transform var(--transition),box-shadow var(--transition);
+}
+.seat[aria-pressed="true"]{background:var(--selected);color:#021617;box-shadow:0 8px 18px rgba(0,0,0,0.45)}
+.seat.booked{background:var(--booked);color:#fff;cursor:not-allowed;opacity:0.95}
+.seat:focus{outline:3px solid rgba(0,191,165,0.14);outline-offset:2px}
+.seat-label{font-size:0.8rem}
+
+/* seat legend */
+.legend{display:flex;gap:12px;align-items:center;margin-top:12px}
+.legend .chip{display:flex;gap:8px;align-items:center;padding:8px;border-radius:8px;background:rgba(255,255,255,0.02)}
+
+/* Reservation summary */
+.reservation-summary{background:linear-gradient(180deg,#071018, rgba(255,255,255,0.01));padding:14px;border-radius:12px}
+.summary-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-weight:600}
+
+/* ---------- Loyalty Card ---------- */
+.loyalty-card{
+  display:flex;flex-direction:column;gap:12px;padding:18px;border-radius:14px;
+  background:linear-gradient(135deg, rgba(0,191,165,0.08), rgba(255,179,0,0.06));color:#021617;
+}
+.card-mockup{
+  padding:18px;border-radius:12px;background:linear-gradient(90deg,var(--accent),#00e0c4);
+  color:#04241e;font-weight:700;display:flex;flex-direction:column;gap:8px
+}
+.masked{letter-spacing:2px}
+
+/* ---------- Footer / Contact ---------- */
+.site-footer{
+  margin-top:var(--space-lg);padding:var(--space-lg) 0;border-top:1px solid rgba(255,255,255,0.03);
+}
+.footer-grid{display:grid;grid-template-columns:1fr;gap:16px}
+@media(min-width:900px){.footer-grid{grid-template-columns:repeat(3,1fr)}}
+.socials{display:flex;gap:10px;align-items:center}
+
+/* ---------- small helpers ---------- */
+.kicker{font-size:0.9rem;color:var(--accent-2);font-weight:700}
+.hint{color:var(--muted);font-size:0.93rem}
+
+/* ---------- Responsive tweaks ---------- */
+@media(min-width:480px){
+  .movie-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(min-width:700px){
+  .movie-grid{grid-template-columns:repeat(3,1fr)}
+}
+/* Desktop wide */
+@media(min-width:1200px){
+  .hero{padding:48px 0}
+  .container{padding:0 28px}
+}

@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CineWave — Reservation</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body class="page-reservation">
+  <header class="site-header">
+    <div class="container site-nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">CW</div>
+        <div>
+          <div style="font-weight:700">CineWave</div>
+          <div class="hint" style="font-size:0.85rem">Reserve Seats</div>
+        </div>
+      </div>
+
+      <nav class="nav-links hide-mobile" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="movies.html">Movies</a>
+        <a href="movies.html#showtimes">Showtimes</a>
+        <a href="reservation.html" class="active">Reservations</a>
+        <a href="loyalty.html">Loyalty Card</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="hide-desktop mobile-menu-btn" role="button" tabindex="0" aria-expanded="false"></div>
+    </div>
+  </header>
+
+  <main class="container" style="padding:22px 0">
+    <div class="row" style="align-items:flex-start;gap:24px">
+      <div style="flex:1;min-width:280px">
+        <section class="reservation-summary" aria-labelledby="res-summary-title">
+          <h3 id="res-summary-title" style="margin-top:0">Reservation</h3>
+          <div class="summary-row"><div>Movie</div><div id="res-movie-title">—</div></div>
+          <div class="summary-row"><div>When</div><div id="res-movie-time">—</div></div>
+          <div class="summary-row"><div>Seats</div><div id="selected-count">0</div></div>
+          <div class="summary-row"><div>Total</div><div id="selected-total">0</div></div>
+        </section>
+
+        <section style="margin-top:18px">
+          <h4 style="margin:0 0 8px 0">Select seats</h4>
+          <div class="seat-map" aria-label="Seat selection map">
+            <div id="seat-grid" class="seat-grid" role="grid" aria-label="Cinema seats"></div>
+
+            <div class="legend" aria-hidden="true">
+              <div class="chip"><div style="width:20px;height:18px;border-radius:4px;background:var(--available)"></div><div class="hint">Available</div></div>
+              <div class="chip"><div style="width:20px;height:18px;border-radius:4px;background:var(--selected)"></div><div class="hint">Selected</div></div>
+              <div class="chip"><div style="width:20px;height:18px;border-radius:4px;background:var(--booked)"></div><div class="hint">Booked</div></div>
+            </div>
+          </div>
+        </section>
+
+        <section style="margin-top:18px">
+          <h4 style="margin:0 0 8px 0">Details</h4>
+          <form id="reservation-form" onsubmit="return false;">
+            <div class="form-row">
+              <div>
+                <label for="res-name">Name</label>
+                <input id="res-name" placeholder="Full name" required />
+              </div>
+              <div>
+                <label for="res-email">Email</label>
+                <input id="res-email" type="email" placeholder="you@example.com" required />
+              </div>
+              <div>
+                <label for="res-loyalty">Loyalty card (optional)</label>
+                <input id="res-loyalty" placeholder="Loyalty number" />
+              </div>
+              <div style="margin-top:12px">
+                <button id="confirm-reservation" class="btn">Confirm Reservation</button>
+              </div>
+            </div>
+          </form>
+        </section>
+      </div>
+
+      <aside style="width:320px;min-width:240px">
+        <div style="background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);padding:16px;border-radius:12px">
+          <h4 style="margin:0 0 8px 0">Summary</h4>
+          <p class="hint" style="margin-top:6px">Selected seats and pricing update in real time. Seat price is <strong>₱220</strong>.</p>
+          <div style="margin-top:12px">
+            <h5 style="margin:0 0 6px 0">Policies</h5>
+            <ul style="margin:0;padding-left:18px">
+              <li class="hint">Booking is subject to availability.</li>
+              <li class="hint">Check-in 15 min before screening.</li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h4>CineWave</h4>
+        <div class="hint">123 Film Ln, Cinema City</div>
+        <div class="hint">Phone: (02) 555-0199</div>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul style="list-style:none;padding:0;margin:0">
+          <li><a href="movies.html">Back to Movies</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <div class="hint">hello@cinewave.example</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
