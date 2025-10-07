@@ -123,7 +123,7 @@ label{display:block;margin-bottom:6px;font-size:0.95rem;color:var(--muted)}
 }
 .hero-card{
   background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  border-radius:18px;padding:24px;display:flex;gap:20px;align-items:center;
+  border-radius:20px;padding:24px;display:flex;gap:20px;align-items:center;
   box-shadow:0 12px 40px rgba(3,6,10,0.6);
 }
 .hero-info h1{margin:0;font-size:1.6rem}
@@ -135,11 +135,11 @@ label{display:block;margin-bottom:6px;font-size:0.95rem;color:var(--muted)}
 
 /* ---------- Movie Lists / Cards ---------- */
 .movie-grid{
-  display:grid;gap:16px;
+  display:grid;gap:20px;
   grid-template-columns:repeat(2,1fr);
 }
 .movie-card{
-  display:flex;gap:12px;background:var(--card-bg);padding:12px;border-radius:12px;align-items:flex-start;
+  display:flex;gap:16px;background:var(--card-bg);padding:16px;border-radius:16px;align-items:flex-start;
   transition:transform var(--transition),box-shadow var(--transition);
 }
 .movie-card:hover{transform:translateY(-6px)}
