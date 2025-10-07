@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CineWave — Contact</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body class="page-contact">
+  <header class="site-header">
+    <div class="container site-nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">CW</div>
+        <div>
+          <div style="font-weight:700">CineWave</div>
+          <div class="hint" style="font-size:0.85rem">Contact</div>
+        </div>
+      </div>
+
+      <nav class="nav-links hide-mobile" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="movies.html">Movies</a>
+        <a href="reservation.html">Reservations</a>
+        <a href="loyalty.html">Loyalty Card</a>
+        <a href="contact.html" class="active">Contact</a>
+      </nav>
+
+      <div class="hide-desktop mobile-menu-btn" role="button" tabindex="0" aria-expanded="false"></div>
+    </div>
+  </header>
+
+  <main class="container" style="padding:28px 0">
+    <div style="display:grid;grid-template-columns:1fr;gap:18px">
+      <section>
+        <h1 style="margin:0 0 8px 0">Get in touch</h1>
+        <p class="hint">Questions, feedback, or booking help — send us a message.</p>
+      </section>
+
+      <section style="max-width:680px">
+        <form id="contact-form">
+          <div class="form-row">
+            <div>
+              <label for="contact-name">Name</label>
+              <input id="contact-name" required />
+            </div>
+            <div>
+              <label for="contact-email">Email</label>
+              <input id="contact-email" type="email" required />
+            </div>
+            <div>
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" rows="6" required></textarea>
+            </div>
+            <div style="margin-top:8px">
+              <button class="btn" type="submit">Send Message</button>
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <section>
+        <h3 style="margin:0 0 8px 0">Visit us</h3>
+        <div class="hint">123 Film Ln, Cinema City · (02) 555-0199</div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h4>CineWave</h4>
+        <div class="hint">hello@cinewave.example</div>
+      </div>
+      <div>
+        <h4>Follow</h4>
+        <div class="hint">Facebook · Instagram · Twitter</div>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <div class="hint">FAQs · Terms</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
